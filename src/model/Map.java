@@ -1,5 +1,9 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,4 +68,44 @@ public class Map {
 		}
 	}
 
+	public static List getMapfromText(String path) throws IOException {
+
+		List list = new ArrayList<String>();
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(path));
+
+			String line;
+
+			while ((line = reader.readLine()) != null) {
+				list.add(line);
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		reader.close();
+		System.out.println(list);
+		return list;
+
+	}
+
+	public static Map setMapFromText() throws IOException {
+		// Récupération de la map
+		List<String> textMap = Map.getMapfromText("src/Map.txt");
+		String get = textMap.toString();
+
+		String getMap1 = get.substring(1, get.length() - 1);
+		String[] getMap = getMap1.split("-", 5);
+
+		int size = getMap.length;
+
+		int width = Integer.parseInt(getMap[size - 2]);
+		int height = Integer.parseInt(getMap[size - 1]);
+
+		Map map;
+		return map = new Map(width, height);
+	}
 }

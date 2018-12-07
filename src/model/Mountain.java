@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mountain {
 
 	private int posX;
@@ -46,4 +52,47 @@ public class Mountain {
 		}
 
 	}
+
+	public static List getMountfromText(String path) throws IOException {
+
+		List list = new ArrayList<String>();
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(path));
+
+			String line;
+
+			while ((line = reader.readLine()) != null) {
+				list.add(line);
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		reader.close();
+		System.out.println(list);
+		return list;
+
+	}
+	
+	public static Mountain setMountain() throws IOException {
+		// Récupération de la Mountain
+				List<String> textMount = Mountain.getMountfromText("src/Mountain.txt");
+				String getMount = textMount.toString();
+
+				String getMount1 = getMount.substring(1, getMount.length() - 1);
+				String[] getMount2 = getMount1.split("-", 5);
+
+				int sizeMount = getMount2.length;
+
+				int PosXMount = Integer.parseInt(getMount2[sizeMount - 2]);
+				int PosYMount = Integer.parseInt(getMount2[sizeMount - 1]);
+				Mountain mount;
+				return mount = new Mountain(PosXMount, PosYMount);
+				// Fin de la file map
+	}
+
 }
