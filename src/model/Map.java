@@ -98,7 +98,9 @@ public class Map {
 		String get = textMap.toString();
 
 		String getMap1 = get.substring(1, get.length() - 1);
+		
 		String[] getMap = getMap1.split("-", 5);
+		
 
 		int size = getMap.length;
 
@@ -107,5 +109,9 @@ public class Map {
 
 		Map map;
 		return map = new Map(width, height);
+	}
+
+	public Map() {
+		super();
 	}
 }

@@ -95,4 +95,8 @@ public class Mountain {
 				// Fin de la file map
 	}
 
+	public Mountain() {
+		super();
+	}
+
 }

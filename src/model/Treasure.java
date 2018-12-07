@@ -91,16 +91,22 @@ public class Treasure {
 				String getChest = textChest.toString();
 
 				String getChest1 = getChest.substring(1, getChest.length() - 1);
+				
 				String[] getChest2 = getChest1.split("-", 5);
+				
 
 				int sizeChest = getChest2.length;
 
-				int posXChest = Integer.parseInt(getChest2[sizeChest - 3]);
-				int posYChest = Integer.parseInt(getChest2[sizeChest - 2]);
-				int numberOfChest = Integer.parseInt(getChest2[sizeChest - 1]);
+				int posXChest = Integer.parseInt(getChest2[sizeChest - 2]);
+				int posYChest = Integer.parseInt(getChest2[sizeChest - 1]);
+				int numberOfChest = Integer.parseInt(getChest2[sizeChest - 0]);
 				Treasure chest;
 				return chest = new Treasure(posXChest, posYChest, numberOfChest);
 				// Fin de la file map
+	}
+
+	public Treasure() {
+		super();
 	}
 
 }
